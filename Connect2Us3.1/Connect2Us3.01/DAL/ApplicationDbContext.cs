@@ -34,7 +34,7 @@ namespace Connect2Us3._01.DAL
                 .HasPrecision(18, 2);
 
             modelBuilder.Entity<Order>()
-                .Property(o => o.Total)
+                .Property(o => o.TotalAmount)
                 .HasPrecision(18, 2);
 
             modelBuilder.Entity<Rental>()

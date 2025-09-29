@@ -20,5 +20,7 @@ namespace Connect2Us3._01.Models
         public string Comment { get; set; }
 
         public DateTime ReviewDate { get; set; }
+
+        public string ReviewText { get; set; }
     }
 }

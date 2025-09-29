@@ -193,25 +193,25 @@ namespace Connect2Us3._01.Migrations
 
         private void SeedAuthors(Connect2Us3._01.DAL.ApplicationDbContext context)
         {
-            context.Authors.AddOrUpdate(a => a.AuthorName,
-                new Author { AuthorName = "J.K. Rowling", Biography = "British author, best known for the Harry Potter series" },
-                new Author { AuthorName = "Stephen King", Biography = "American author of horror, supernatural fiction, suspense, and fantasy novels" },
-                new Author { AuthorName = "Agatha Christie", Biography = "English writer known for her detective novels" },
-                new Author { AuthorName = "George Orwell", Biography = "English novelist and essayist, journalist and critic" },
-                new Author { AuthorName = "Jane Austen", Biography = "English novelist known primarily for her six major novels" },
-                new Author { AuthorName = "Mark Twain", Biography = "American writer, humorist, entrepreneur, publisher, and lecturer" },
-                new Author { AuthorName = "Ernest Hemingway", Biography = "American novelist, short-story writer, and journalist" },
-                new Author { AuthorName = "William Shakespeare", Biography = "English playwright, poet, and actor" },
-                new Author { AuthorName = "Charles Dickens", Biography = "English writer and social critic" },
-                new Author { AuthorName = "Leo Tolstoy", Biography = "Russian writer who is regarded as one of the greatest authors of all time" },
-                new Author { AuthorName = "F. Scott Fitzgerald", Biography = "American novelist and short story writer" },
-                new Author { AuthorName = "Harper Lee", Biography = "American novelist widely known for To Kill a Mockingbird" },
-                new Author { AuthorName = "Gabriel García Márquez", Biography = "Colombian novelist, short-story writer, screenwriter and journalist" },
-                new Author { AuthorName = "Toni Morrison", Biography = "American novelist, essayist, book editor, and college professor" },
-                new Author { AuthorName = "Maya Angelou", Biography = "American poet, memoirist, and civil rights activist" },
-                new Author { AuthorName = "Dan Brown", Biography = "American author best known for his thriller novels" },
-                new Author { AuthorName = "John Grisham", Biography = "American novelist, attorney, politician, and activist" },
-                new Author { AuthorName = "Paulo Coelho", Biography = "Brazilian lyricist and novelist" }
+            context.Authors.AddOrUpdate(a => a.Name,
+                new Author { Name = "J.K. Rowling", Biography = "British author, best known for the Harry Potter series" },
+                new Author { Name = "Stephen King", Biography = "American author of horror, supernatural fiction, suspense, and fantasy novels" },
+                new Author { Name = "Agatha Christie", Biography = "English writer known for her detective novels" },
+                new Author { Name = "George Orwell", Biography = "English novelist and essayist, journalist and critic" },
+                new Author { Name = "Jane Austen", Biography = "English novelist known primarily for her six major novels" },
+                new Author { Name = "Mark Twain", Biography = "American writer, humorist, entrepreneur, publisher, and lecturer" },
+                new Author { Name = "Ernest Hemingway", Biography = "American novelist, short-story writer, and journalist" },
+                new Author { Name = "William Shakespeare", Biography = "English playwright, poet, and actor" },
+                new Author { Name = "Charles Dickens", Biography = "English writer and social critic" },
+                new Author { Name = "Leo Tolstoy", Biography = "Russian writer who is regarded as one of the greatest authors of all time" },
+                new Author { Name = "F. Scott Fitzgerald", Biography = "American novelist and short story writer" },
+                new Author { Name = "Harper Lee", Biography = "American novelist widely known for To Kill a Mockingbird" },
+                new Author { Name = "Gabriel García Márquez", Biography = "Colombian novelist, short-story writer, screenwriter and journalist" },
+                new Author { Name = "Toni Morrison", Biography = "American novelist, essayist, book editor, and college professor" },
+                new Author { Name = "Maya Angelou", Biography = "American poet, memoirist, and civil rights activist" },
+                new Author { Name = "Dan Brown", Biography = "American author best known for his thriller novels" },
+                new Author { Name = "John Grisham", Biography = "American novelist, attorney, politician, and activist" },
+                new Author { Name = "Paulo Coelho", Biography = "Brazilian lyricist and novelist" }
             );
         }
 

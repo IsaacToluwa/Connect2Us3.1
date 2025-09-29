@@ -20,5 +20,11 @@ namespace Connect2Us3._01.Models
         public DateTime? EstimatedDeliveryDate { get; set; }
 
         public DateTime? ActualDeliveryDate { get; set; }
+
+        public DateTime DeliveryDate { get; set; }
+
+        public string DeliveryAddress { get; set; }
+
+        public string TrackingNumber { get; set; }
     }
 }

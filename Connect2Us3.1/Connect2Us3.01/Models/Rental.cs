@@ -22,5 +22,9 @@ namespace Connect2Us3._01.Models
 
         [Column(TypeName = "decimal")]
         public decimal RentalFee { get; set; }
+
+        public DateTime? ReturnDate { get; set; }
+
+        public string Status { get; set; }
     }
 }

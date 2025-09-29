@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Connect2Us3._01.Controllers
 {
+    [RoutePrefix("Seed")]
     public class SeedController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -20,12 +21,15 @@ namespace Connect2Us3._01.Controllers
             roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
         }
 
+        [HttpGet]
+        [Route("")]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("SeedDatabase")]
         public ActionResult SeedDatabase()
         {
             try

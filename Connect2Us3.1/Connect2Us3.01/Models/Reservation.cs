@@ -15,5 +15,9 @@ namespace Connect2Us3._01.Models
 
         [Required]
         public DateTime ReservationDate { get; set; }
+
+        public DateTime ExpiryDate { get; set; }
+
+        public string Status { get; set; }
     }
 }

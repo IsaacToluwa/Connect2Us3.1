@@ -24,5 +24,7 @@ namespace Connect2Us3._01.Models
         [Required]
         [StringLength(50)]
         public string Status { get; set; }
+
+        public string TransactionId { get; set; }
     }
 }

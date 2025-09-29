@@ -22,7 +22,7 @@ namespace Connect2Us3._01.Models
         public string Publisher { get; set; }
 
         [Column(TypeName = "datetime2")]
-        public DateTime? PublishedDate { get; set; }
+        public DateTime? PublicationDate { get; set; }
 
         public int AuthorId { get; set; }
         public virtual Author Author { get; set; }
@@ -36,7 +36,7 @@ namespace Connect2Us3._01.Models
         [Column(TypeName = "decimal")]
         public decimal? RentalPrice { get; set; }
 
-        public int StockLevel { get; set; }
+        public int Stock { get; set; }
 
         public bool IsRentable { get; set; }
     }

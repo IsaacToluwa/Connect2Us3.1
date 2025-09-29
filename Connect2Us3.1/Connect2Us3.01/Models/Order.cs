@@ -17,7 +17,11 @@ namespace Connect2Us3._01.Models
 
         [Required]
         [Column(TypeName = "decimal")]
-        public decimal Total { get; set; }
+        public decimal TotalAmount { get; set; }
+
+        public string Status { get; set; }
+
+        public string ShippingAddress { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

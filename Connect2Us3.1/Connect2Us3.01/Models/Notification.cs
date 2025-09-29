@@ -16,5 +16,7 @@ namespace Connect2Us3._01.Models
         public bool IsRead { get; set; }
 
         public DateTime Date { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Connect2Us3._01.Models
@@ -11,5 +12,7 @@ namespace Connect2Us3._01.Models
 
         public int BookId { get; set; }
         public virtual Book Book { get; set; }
+
+        public DateTime DateAdded { get; set; }
     }
 }
