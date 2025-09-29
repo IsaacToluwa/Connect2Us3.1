@@ -63,8 +63,7 @@
               "RelativeToolTip": "App_Start\\RouteConfig.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T13:10:46.744Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-29T13:10:46.744Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "DAL\\ApplicationDbContext.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAkwAkAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T10:38:30.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-29T10:38:30.307Z"
             }
           ]
         }

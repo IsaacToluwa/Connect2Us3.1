@@ -83,3 +83,5 @@ C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01.Tests\ob
 C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01.Tests\obj\Debug\Connect2.361FB3FE.Up2Date
 C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01.Tests\obj\Debug\Connect2Us3.01.Tests.dll
 C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01.Tests\obj\Debug\Connect2Us3.01.Tests.pdb
+C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
