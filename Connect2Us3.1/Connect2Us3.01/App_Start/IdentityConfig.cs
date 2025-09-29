@@ -25,16 +25,22 @@ namespace Connect2Us3._01
                 var smtpEnableSsl = bool.Parse(ConfigurationManager.AppSettings["SmtpEnableSsl"] ?? "true");
                 var fromEmail = ConfigurationManager.AppSettings["FromEmail"] ?? smtpUsername;
 
+                // For development/testing - log email details instead of sending
+                System.Diagnostics.Trace.TraceInformation($"[DEV MODE] Email would be sent to: {message.Destination}");
+                System.Diagnostics.Trace.TraceInformation($"[DEV MODE] Subject: {message.Subject}");
+                System.Diagnostics.Trace.TraceInformation($"[DEV MODE] Body: {message.Body}");
+
                 // Validate email configuration
-                if (string.IsNullOrEmpty(smtpUsername) || string.IsNullOrEmpty(smtpPassword))
+                if (string.IsNullOrEmpty(smtpUsername) || string.IsNullOrEmpty(smtpPassword) || 
+                    smtpUsername == "your-email@gmail.com" || smtpPassword == "your-app-password")
                 {
-                    System.Diagnostics.Trace.TraceWarning("Email credentials not configured. Please update Web.config with valid SMTP settings.");
+                    System.Diagnostics.Trace.TraceWarning("Email credentials not configured properly. Using development mode - email not actually sent.");
+                    
+                    // In development mode, we'll simulate successful email delivery
+                    // This allows the registration process to continue without actual email sending
+                    await Task.Delay(100); // Simulate network delay
                     return;
                 }
-
-                // For development/testing - log email details
-                System.Diagnostics.Trace.TraceInformation($"Sending email to: {message.Destination}");
-                System.Diagnostics.Trace.TraceInformation($"Subject: {message.Subject}");
 
             using (var smtpClient = new SmtpClient(smtpHost, smtpPort))
             {
