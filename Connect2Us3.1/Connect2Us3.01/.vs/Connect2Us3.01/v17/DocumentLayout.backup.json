@@ -3,15 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|c:\\users\\olatu\\source\\repos\\connect2us3.12\\connect2us3.1\\connect2us3.01\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|c:\\users\\olatu\\source\\repos\\connect2us3.12\\connect2us3.1\\connect2us3.01\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|solutionrelative:app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|c:\\users\\olatu\\source\\repos\\connect2us3.12\\connect2us3.1\\connect2us3.01\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|c:\\users\\olatu\\source\\repos\\connect2us3.12\\connect2us3.1\\connect2us3.01\\dal\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\dal\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E359173F-C624-4058-9BDD-19F0189303ED}|Connect2Us3.01.csproj|solutionrelative:dal\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -51,6 +55,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T13:55:12.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "RouteConfig.cs",
               "DocumentMoniker": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\App_Start\\RouteConfig.cs",
               "RelativeDocumentMoniker": "App_Start\\RouteConfig.cs",
@@ -63,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Web.config",
               "DocumentMoniker": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\Web.config",
               "RelativeDocumentMoniker": "Web.config",
@@ -76,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\DAL\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "DAL\\ApplicationDbContext.cs",
@@ -84,12 +101,11 @@
               "RelativeToolTip": "DAL\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T10:38:30.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-29T10:38:30.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IdentityConfig.cs",
               "DocumentMoniker": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\App_Start\\IdentityConfig.cs",
               "RelativeDocumentMoniker": "App_Start\\IdentityConfig.cs",
@@ -101,7 +117,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Global.asax.cs",
               "DocumentMoniker": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\Global.asax.cs",
               "RelativeDocumentMoniker": "Global.asax.cs",
