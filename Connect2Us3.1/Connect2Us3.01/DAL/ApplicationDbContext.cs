@@ -16,6 +16,36 @@ namespace Connect2Us3._01.DAL
             return new ApplicationDbContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configure decimal precision for SQL Server
+            modelBuilder.Entity<Book>()
+                .Property(b => b.Price)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Book>()
+                .Property(b => b.RentalPrice)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<OrderDetail>()
+                .Property(od => od.UnitPrice)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Total)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Rental>()
+                .Property(r => r.RentalFee)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Payment>()
+                .Property(p => p.Amount)
+                .HasPrecision(18, 2);
+        }
+
         public System.Data.Entity.DbSet<Connect2Us3._01.Models.Book> Books { get; set; }
         public System.Data.Entity.DbSet<Connect2Us3._01.Models.Category> Categories { get; set; }
         public System.Data.Entity.DbSet<Connect2Us3._01.Models.Author> Authors { get; set; }

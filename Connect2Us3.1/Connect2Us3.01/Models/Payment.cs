@@ -12,7 +12,7 @@ namespace Connect2Us3._01.Models
         public virtual Order Order { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(18, 2)")]
+        [Column(TypeName = "decimal")]
         public decimal Amount { get; set; }
 
         [Required]

@@ -15,7 +15,7 @@ namespace Connect2Us3._01.Models
 
         public int Quantity { get; set; }
 
-        [Column(TypeName = "decimal(18, 2)")]
+        [Column(TypeName = "decimal")]
         public decimal UnitPrice { get; set; }
     }
 }

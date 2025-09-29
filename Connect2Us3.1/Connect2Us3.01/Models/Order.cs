@@ -16,7 +16,7 @@ namespace Connect2Us3._01.Models
         public DateTime OrderDate { get; set; }
 
         [Required]
-        [Column(TypeName = "decimal(18, 2)")]
+        [Column(TypeName = "decimal")]
         public decimal Total { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

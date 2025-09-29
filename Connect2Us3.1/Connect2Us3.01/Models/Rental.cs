@@ -20,7 +20,7 @@ namespace Connect2Us3._01.Models
         [Required]
         public DateTime DueDate { get; set; }
 
-        [Column(TypeName = "decimal(18, 2)")]
+        [Column(TypeName = "decimal")]
         public decimal RentalFee { get; set; }
     }
 }
