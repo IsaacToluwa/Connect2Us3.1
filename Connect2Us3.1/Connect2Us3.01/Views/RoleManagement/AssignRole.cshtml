@@ -1,0 +1,100 @@
+@model Connect2Us3._01.Models.AssignRoleViewModel
+
+@{
+    ViewBag.Title = "Assign Roles";
+}
+
+<h2>Assign Roles</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Assign Roles to @Model.UserName</h3>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("AssignRole", "RoleManagement", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.UserId)
+                    @Html.HiddenFor(m => m.UserName)
+                    @Html.HiddenFor(m => m.Email)
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            <p class="form-control-static">@Model.UserName</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            <p class="form-control-static">@Model.Email</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Current Roles</label>
+                        <div class="col-md-9">
+                            @if (Model.CurrentRoles.Any())
+                            {
+                                foreach (var role in Model.CurrentRoles)
+                                {
+                                    <span class="label label-primary">@role</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="text-muted">No roles assigned</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SelectedRoles, "Select Roles", new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @foreach (var role in Model.AvailableRoles)
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="SelectedRoles" value="@role.Value" @(role.Selected ? "checked" : "") />
+                                        @role.Text
+                                    </label>
+                                </div>
+                            }
+                            @Html.ValidationMessageFor(m => m.SelectedRoles, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="submit" class="btn btn-primary">Update Roles</button>
+                            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Role Descriptions</h3>
+            </div>
+            <div class="panel-body">
+                <dl>
+                    <dt>Admin</dt>
+                    <dd>Full system access including user and role management.</dd>
+                    
+                    <dt>Staff</dt>
+                    <dd>Manage books, orders, deliveries, and customer support.</dd>
+                    
+                    <dt>Customer</dt>
+                    <dd>Browse books, manage cart, place orders, and write reviews.</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

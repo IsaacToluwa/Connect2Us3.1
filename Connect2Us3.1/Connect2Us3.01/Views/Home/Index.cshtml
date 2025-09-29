@@ -2,23 +2,158 @@
     ViewBag.Title = "Home";
 }
 
-<div class="hero-section bg-primary text-white py-5 mb-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-3">Welcome to Connect2Us</h1>
-                <p class="lead mb-4">Your ultimate book connection platform. Discover, share, and connect with fellow book lovers around the world.</p>
-                <div class="d-flex gap-3">
-                    @Html.ActionLink("Browse Books", "Index", "Books", null, new { @class = "btn btn-light btn-lg" })
-                    @Html.ActionLink("Join Community", "Register", "Account", null, new { @class = "btn btn-outline-light btn-lg" })
+@if (Request.IsAuthenticated)
+{
+    <!-- Authenticated User Dashboard -->
+    <div class="dashboard-section py-4 mb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="mb-4">Welcome back, @User.Identity.Name!</h2>
                 </div>
             </div>
-            <div class="col-lg-6 text-center">
-                <i class="fas fa-book-open" style="font-size: 8rem; opacity: 0.8;"></i>
+            
+            @if (User.IsInRole("Admin"))
+            {
+                <!-- Admin Dashboard -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">User Management</h5>
+                                <p class="card-text">Manage user roles and permissions</p>
+                                @Html.ActionLink("Manage Users", "Index", "RoleManagement", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">System Overview</h5>
+                                <p class="card-text">Monitor system performance</p>
+                                @Html.ActionLink("View Reports", "Index", "Orders", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-info text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Content Management</h5>
+                                <p class="card-text">Manage books and authors</p>
+                                @Html.ActionLink("Manage Books", "Index", "Books", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-warning text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Orders & Payments</h5>
+                                <p class="card-text">Monitor transactions</p>
+                                @Html.ActionLink("View Payments", "Index", "Payments", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Staff"))
+            {
+                <!-- Staff Dashboard -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Order Management</h5>
+                                <p class="card-text">Process and manage customer orders</p>
+                                @Html.ActionLink("Manage Orders", "Index", "Orders", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Deliveries</h5>
+                                <p class="card-text">Track and manage deliveries</p>
+                                @Html.ActionLink("View Deliveries", "Index", "Deliveries", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-info text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Customer Support</h5>
+                                <p class="card-text">Handle customer inquiries</p>
+                                @Html.ActionLink("Notifications", "Index", "Notifications", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Customer"))
+            {
+                <!-- Customer Dashboard -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">My Orders</h5>
+                                <p class="card-text">View your order history</p>
+                                @Html.ActionLink("View Orders", "Index", "Orders", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Shopping Cart</h5>
+                                <p class="card-text">Items ready for checkout</p>
+                                @Html.ActionLink("View Cart", "Index", "ShoppingCarts", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-info text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Wishlist</h5>
+                                <p class="card-text">Books you want to read</p>
+                                @Html.ActionLink("View Wishlist", "Index", "Wishlists", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-warning text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">My Reviews</h5>
+                                <p class="card-text">Share your book experiences</p>
+                                @Html.ActionLink("My Reviews", "Index", "Reviews", null, new { @class = "btn btn-light btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <!-- Public Landing Page -->
+    <div class="hero-section bg-primary text-white py-5 mb-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-3">Welcome to Connect2Us</h1>
+                    <p class="lead mb-4">Your ultimate book connection platform. Discover, share, and connect with fellow book lovers around the world.</p>
+                    <div class="d-flex gap-3">
+                        @Html.ActionLink("Browse Books", "Index", "Books", null, new { @class = "btn btn-light btn-lg" })
+                        @Html.ActionLink("Join Community", "Register", "Account", null, new { @class = "btn btn-outline-light btn-lg" })
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <i class="fas fa-book-open" style="font-size: 8rem; opacity: 0.8;"></i>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
 
 <div class="container">
     <!-- Features Section -->

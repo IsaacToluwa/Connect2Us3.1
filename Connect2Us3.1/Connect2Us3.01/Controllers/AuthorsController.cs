@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace Connect2Us3._01.Controllers
 {
+    [Authorize(Roles = "Admin,Staff,Customer")]
     public class AuthorsController : Controller
     {
         private AuthorBLL _authorBLL;
@@ -28,6 +29,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Authors/Create
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Create()
         {
             return View();
@@ -35,6 +37,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Authors/Create
         [HttpPost]
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Create(Author author)
         {
             try
@@ -49,6 +52,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Authors/Edit/5
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Edit(int id)
         {
             var author = _authorBLL.GetAuthorById(id);
@@ -57,6 +61,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Authors/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Edit(int id, Author author)
         {
             try
@@ -71,6 +76,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Authors/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var author = _authorBLL.GetAuthorById(id);
@@ -79,6 +85,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Authors/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

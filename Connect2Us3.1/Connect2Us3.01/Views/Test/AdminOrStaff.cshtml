@@ -1,0 +1,79 @@
+@{
+    ViewBag.Title = "Admin or Staff Page";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-primary">
+            <i class="glyphicon glyphicon-ok-circle"></i>
+            Access Granted!
+        </h1>
+        <p class="lead">@ViewBag.Message</p>
+        <p>You are successfully viewing this page because you have either the <strong>Admin</strong> or <strong>Staff</strong> role.</p>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Management Privileges Verified</h3>
+        </div>
+        <div class="panel-body">
+            <p><strong>Current User:</strong> @User.Identity.Name</p>
+            <p><strong>User ID:</strong> @User.Identity.GetUserId()</p>
+            <p><strong>Role:</strong> 
+                @if (User.IsInRole("Admin"))
+                {
+                    <span class="label label-danger">Admin</span>
+                }
+                @if (User.IsInRole("Staff"))
+                {
+                    <span class="label label-info">Staff</span>
+                }
+            </p>
+            <p><strong>Access Level:</strong> Management Operations Access</p>
+        </div>
+    </div>
+
+    <div class="alert alert-info">
+        <strong>Note:</strong> If you can see this page, the role-based authorization is working correctly for users with Admin or Staff roles.
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Management Functions</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><a href="@Url.Action("Index", "Orders")">Manage Orders</a></li>
+                        <li><a href="@Url.Action("Index", "Books")">Manage Books</a></li>
+                        <li><a href="@Url.Action("Index", "Categories")">Manage Categories</a></li>
+                        <li><a href="@Url.Action("Index", "Authors")">Manage Authors</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-6">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h4>Admin-Only Functions</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled">
+                            <li><a href="@Url.Action("Index", "RoleManagement")">User Role Management</a></li>
+                            <li><a href="@Url.Action("AdminOnly", "Test")">Admin Only Test Page</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <p>
+        <a href="@Url.Action("Index", "Test")" class="btn btn-primary">Back to Test Page</a>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-default">Home</a>
+    </p>
+</div>

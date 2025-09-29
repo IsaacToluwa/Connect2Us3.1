@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace Connect2Us3._01.Controllers
 {
+    [Authorize(Roles = "Admin,Staff,Customer")]
     public class ReservationsController : Controller
     {
         private ReservationBLL _reservationBLL;

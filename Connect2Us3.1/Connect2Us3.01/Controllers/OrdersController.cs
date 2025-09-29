@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace Connect2Us3._01.Controllers
 {
+    [Authorize(Roles = "Admin,Staff,Customer")]
     public class OrdersController : Controller
     {
         private OrderBLL _orderBLL;
@@ -14,6 +15,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Orders
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Index()
         {
             var orders = _orderBLL.GetAllOrders();
@@ -49,6 +51,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Orders/Edit/5
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Edit(int id)
         {
             var order = _orderBLL.GetOrderById(id);
@@ -57,6 +60,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Orders/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Edit(int id, Order order)
         {
             try
@@ -71,6 +75,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Orders/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var order = _orderBLL.GetOrderById(id);
@@ -79,6 +84,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Orders/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

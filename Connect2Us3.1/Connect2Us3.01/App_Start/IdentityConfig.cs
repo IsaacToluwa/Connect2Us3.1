@@ -10,6 +10,7 @@ using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Linq;
 
 namespace Connect2Us3._01
 {
@@ -153,6 +154,20 @@ namespace Connect2Us3._01
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+
+    // Configure the role manager used in this application. RoleManager is defined in ASP.NET Identity and is used by the application.
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore)
+            : base(roleStore)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            return new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
         }
     }
 }

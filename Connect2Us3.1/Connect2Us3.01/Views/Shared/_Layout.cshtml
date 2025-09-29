@@ -20,6 +20,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Books", "Index", "Books", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Categories", "Index", "Categories", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Role Management", "Index", "RoleManagement", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Test Access", "Index", "Test", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>

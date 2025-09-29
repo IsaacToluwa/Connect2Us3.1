@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace Connect2Us3._01.Controllers
 {
+    [Authorize(Roles = "Admin,Staff,Customer")]
     public class BooksController : Controller
     {
         private BookBLL _bookBLL;
@@ -28,6 +29,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Books/Create
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Create()
         {
             return View();
@@ -35,6 +37,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Books/Create
         [HttpPost]
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Create(Book book)
         {
             try
@@ -49,6 +52,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Books/Edit/5
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Edit(int id)
         {
             var book = _bookBLL.GetBookById(id);
@@ -57,6 +61,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Books/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin,Staff")]
         public ActionResult Edit(int id, Book book)
         {
             try
@@ -71,6 +76,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Books/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var book = _bookBLL.GetBookById(id);
@@ -79,6 +85,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Books/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

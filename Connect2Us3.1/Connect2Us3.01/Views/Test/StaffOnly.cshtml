@@ -1,0 +1,36 @@
+@{
+    ViewBag.Title = "Staff Only Page";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-info">
+            <i class="glyphicon glyphicon-ok-circle"></i>
+            Access Granted!
+        </h1>
+        <p class="lead">@ViewBag.Message</p>
+        <p>You are successfully viewing this page because you have the <strong>Staff</strong> role.</p>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Staff Privileges Verified</h3>
+        </div>
+        <div class="panel-body">
+            <p><strong>Current User:</strong> @User.Identity.Name</p>
+            <p><strong>User ID:</strong> @User.Identity.GetUserId()</p>
+            <p><strong>Role:</strong> Staff</p>
+            <p><strong>Access Level:</strong> Staff Operations Access</p>
+        </div>
+    </div>
+
+    <div class="alert alert-info">
+        <strong>Note:</strong> If you can see this page, the role-based authorization is working correctly for Staff users.
+    </div>
+
+    <p>
+        <a href="@Url.Action("Index", "Test")" class="btn btn-primary">Back to Test Page</a>
+        <a href="@Url.Action("AdminOrStaff", "Test")" class="btn btn-info">Admin or Staff Page</a>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-default">Home</a>
+    </p>
+</div>

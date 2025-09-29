@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace Connect2Us3._01.Controllers
 {
+    [Authorize(Roles = "Admin,Staff,Customer")]
     public class ReviewsController : Controller
     {
         private ReviewBLL _reviewBLL;
@@ -71,6 +72,7 @@ namespace Connect2Us3._01.Controllers
         }
 
         // GET: Reviews/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var review = _reviewBLL.GetReviewById(id);
@@ -79,6 +81,7 @@ namespace Connect2Us3._01.Controllers
 
         // POST: Reviews/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

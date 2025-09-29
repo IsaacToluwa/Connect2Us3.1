@@ -10,10 +10,40 @@
     @Html.AntiForgeryToken()
 
     <ul class="navbar-nav">
-        <li class="nav-item">
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Hello @User.Identity.GetUserName()!
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>@Html.ActionLink("Manage Account", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                @if (User.IsInRole("Customer"))
+                {
+                    <li><hr class="dropdown-divider"></li>
+                    <li>@Html.ActionLink("My Orders", "Index", "Orders", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                    <li>@Html.ActionLink("Shopping Cart", "Index", "ShoppingCarts", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                    <li>@Html.ActionLink("Wishlist", "Index", "Wishlists", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                    <li>@Html.ActionLink("My Reviews", "Index", "Reviews", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                }
+                @if (User.IsInRole("Staff") || User.IsInRole("Admin"))
+                {
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="dropdown-header">Staff Functions</li>
+                    <li>@Html.ActionLink("Manage Orders", "Index", "Orders", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                    <li>@Html.ActionLink("Manage Deliveries", "Index", "Deliveries", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                    <li>@Html.ActionLink("Manage Payments", "Index", "Payments", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                    <li>@Html.ActionLink("Notifications", "Index", "Notifications", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="dropdown-header">Admin Functions</li>
+                    <li>@Html.ActionLink("User Management", "Index", "RoleManagement", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                    <li>@Html.ActionLink("Manage Authors", "Index", "Authors", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })</li>
+                }
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }
 }

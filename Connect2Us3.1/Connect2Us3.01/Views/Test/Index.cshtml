@@ -1,0 +1,140 @@
+@{
+    ViewBag.Title = "Role-Based Access Control Test";
+}
+
+<div class="container">
+    <h2>Role-Based Access Control Test</h2>
+    
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Current User Information</h3>
+        </div>
+        <div class="panel-body">
+            <p><strong>Username:</strong> @ViewBag.CurrentUser</p>
+            <p><strong>User ID:</strong> @User.Identity.GetUserId()</p>
+            <p><strong>Is Admin:</strong> @ViewBag.IsAdmin</p>
+            <p><strong>Is Staff:</strong> @ViewBag.IsStaff</p>
+            <p><strong>Is Customer:</strong> @ViewBag.IsCustomer</p>
+            <p><strong>Current Roles:</strong> 
+                @if (ViewBag.UserRoles != null)
+                {
+                    @string.Join(", ", ViewBag.UserRoles)
+                }
+                else
+                {
+                    <span class="text-muted">No roles assigned</span>
+                }
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Role-Specific Access Tests</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <a href="@Url.Action("AdminOnly", "Test")" class="list-group-item">
+                            <h4 class="list-group-item-heading">Admin Only Page</h4>
+                            <p class="list-group-item-text">Only users with Admin role can access this page.</p>
+                        </a>
+                        <a href="@Url.Action("StaffOnly", "Test")" class="list-group-item">
+                            <h4 class="list-group-item-heading">Staff Only Page</h4>
+                            <p class="list-group-item-text">Only users with Staff role can access this page.</p>
+                        </a>
+                        <a href="@Url.Action("CustomerOnly", "Test")" class="list-group-item">
+                            <h4 class="list-group-item-heading">Customer Only Page</h4>
+                            <p class="list-group-item-text">Only users with Customer role can access this page.</p>
+                        </a>
+                        <a href="@Url.Action("AdminOrStaff", "Test")" class="list-group-item">
+                            <h4 class="list-group-item-heading">Admin or Staff Page</h4>
+                            <p class="list-group-item-text">Users with Admin or Staff roles can access this page.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Create Test User (Admin Only)</h3>
+                    </div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm("CreateTestUser", "Test", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Username:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="username" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Email:</label>
+                                <div class="col-sm-9">
+                                    <input type="email" name="email" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Password:</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="password" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Role:</label>
+                                <div class="col-sm-9">
+                                    <select name="role" class="form-control" required>
+                                        <option value="">Select Role</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Staff">Staff</option>
+                                        <option value="Customer">Customer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-primary">Create Test User</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            @TempData["Error"]
+        </div>
+    }
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Navigation Links</h3>
+        </div>
+        <div class="panel-body">
+            <p><a href="@Url.Action("Index", "RoleManagement")" class="btn btn-info">Role Management</a></p>
+            <p><a href="@Url.Action("Index", "Home")" class="btn btn-default">Back to Home</a></p>
+        </div>
+    </div>
+</div>
