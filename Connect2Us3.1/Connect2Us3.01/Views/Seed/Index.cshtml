@@ -1,0 +1,81 @@
+@{
+    ViewBag.Title = "Database Seeding";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="fa fa-database"></i> Database Seeding
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success">
+                            <i class="fa fa-check-circle"></i> @ViewBag.Message
+                            @if (ViewBag.LoginDetails != null)
+                            {
+                                @Html.Raw(ViewBag.LoginDetails)
+                            }
+                        </div>
+                    }
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle"></i> @ViewBag.Error
+                        </div>
+                    }
+
+                    <div class="well">
+                        <h4><i class="fa fa-info-circle"></i> Database Seeding Information</h4>
+                        <p>This tool will populate your database with sample data including:</p>
+                        <ul>
+                            <li><strong>Roles:</strong> Admin, Staff, Customer</li>
+                            <li><strong>Users:</strong> 1 Admin, 1 Staff, 13 Customers</li>
+                            <li><strong>Categories:</strong> 18 book categories</li>
+                            <li><strong>Authors:</strong> 18 famous authors</li>
+                            <li><strong>Books:</strong> 18 popular books</li>
+                        </ul>
+                        <div class="alert alert-warning">
+                            <i class="fa fa-warning"></i> <strong>Warning:</strong> This operation will add data to your database. Make sure you have a backup if needed.
+                        </div>
+                    </div>
+
+                    @using (Html.BeginForm("SeedDatabase", "Seed", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fa fa-play"></i> Start Database Seeding
+                                </button>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="text-center">
+                        @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Test Access Control", "Index", "Test", null, new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function() {
+                var $btn = $(this).find('button[type="submit"]');
+                $btn.prop('disabled', true);
+                $btn.html('<i class="fa fa-spinner fa-spin"></i> Seeding Database...');
+            });
+        });
+    </script>
+}

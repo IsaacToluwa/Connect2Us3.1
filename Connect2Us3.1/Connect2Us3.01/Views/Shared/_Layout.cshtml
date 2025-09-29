@@ -23,6 +23,7 @@
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Role Management", "Index", "RoleManagement", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Seed Database", "Index", "Seed", new { area = "" }, new { @class = "nav-link" })</li>
                     }
                     @if (Request.IsAuthenticated)
                     {
