@@ -1,0 +1,16 @@
+@{
+    ViewBag.Title = "Registration Successful";
+}
+
+<h2>@ViewBag.Title.</h2>
+<div>
+    <p>
+        Thank you for registering! Please check your email and click the confirmation link to activate your account.
+    </p>
+    <p>
+        If you don't see the email in your inbox, please check your spam folder.
+    </p>
+    <p>
+        @Html.ActionLink("Go to Home Page", "Index", "Home", null, new { @class = "btn btn-primary" })
+    </p>
+</div>

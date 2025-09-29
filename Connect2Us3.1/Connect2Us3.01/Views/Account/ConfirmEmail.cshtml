@@ -1,0 +1,13 @@
+@{
+    ViewBag.Title = "Email Confirmed";
+}
+
+<h2>@ViewBag.Title.</h2>
+<div>
+    <p>
+        Thank you for confirming your email. You are now logged in and can access all features of the application.
+    </p>
+    <p>
+        @Html.ActionLink("Go to Home Page", "Index", "Home", null, new { @class = "btn btn-primary" })
+    </p>
+</div>

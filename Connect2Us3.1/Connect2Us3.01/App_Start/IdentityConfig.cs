@@ -6,17 +6,63 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using System;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Connect2Us3._01
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            // Configure SMTP settings from web.config
+            var smtpHost = ConfigurationManager.AppSettings["SmtpHost"] ?? "smtp.gmail.com";
+                var smtpPort = int.Parse(ConfigurationManager.AppSettings["SmtpPort"] ?? "587");
+                var smtpUsername = ConfigurationManager.AppSettings["SmtpUsername"];
+                var smtpPassword = ConfigurationManager.AppSettings["SmtpPassword"];
+                var smtpEnableSsl = bool.Parse(ConfigurationManager.AppSettings["SmtpEnableSsl"] ?? "true");
+                var fromEmail = ConfigurationManager.AppSettings["FromEmail"] ?? smtpUsername;
+
+                // Validate email configuration
+                if (string.IsNullOrEmpty(smtpUsername) || string.IsNullOrEmpty(smtpPassword))
+                {
+                    System.Diagnostics.Trace.TraceWarning("Email credentials not configured. Please update Web.config with valid SMTP settings.");
+                    return;
+                }
+
+                // For development/testing - log email details
+                System.Diagnostics.Trace.TraceInformation($"Sending email to: {message.Destination}");
+                System.Diagnostics.Trace.TraceInformation($"Subject: {message.Subject}");
+
+            using (var smtpClient = new SmtpClient(smtpHost, smtpPort))
+            {
+                smtpClient.EnableSsl = smtpEnableSsl;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new System.Net.NetworkCredential(smtpUsername, smtpPassword);
+
+                var mailMessage = new MailMessage
+                {
+                    From = new MailAddress(fromEmail, "Connect2Us Bookstore"),
+                    Subject = message.Subject,
+                    Body = message.Body,
+                    IsBodyHtml = true
+                };
+
+                mailMessage.To.Add(message.Destination);
+
+                try
+                {
+                    await smtpClient.SendMailAsync(mailMessage);
+                }
+                catch (Exception ex)
+                {
+                    // Log the error (you might want to use a proper logging framework)
+                    System.Diagnostics.Trace.TraceError($"Failed to send email: {ex.Message}");
+                    throw;
+                }
+            }
         }
     }
 
