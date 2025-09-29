@@ -1,0 +1,101 @@
+@{
+    ViewBag.Title = "About";
+}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="text-center mb-5">
+                <h1 class="display-4 mb-3">About Connect2Us</h1>
+                <p class="lead text-muted">Connecting book lovers worldwide through the power of literature</p>
+            </div>
+
+            <div class="card border-0 shadow-sm mb-5">
+                <div class="card-body p-5">
+                    <h2 class="h3 mb-4">Our Mission</h2>
+                    <p class="mb-4">
+                        At Connect2Us, we believe that books have the power to connect people across cultures, 
+                        generations, and geographical boundaries. Our mission is to create a vibrant community 
+                        where book enthusiasts can discover new titles, share their thoughts, and connect with 
+                        like-minded readers from around the world.
+                    </p>
+                    
+                    <h2 class="h3 mb-4">What We Offer</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-book text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h5>Extensive Library</h5>
+                                    <p class="text-muted mb-0">Access thousands of books across all genres and categories.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-users text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h5>Community Reviews</h5>
+                                    <p class="text-muted mb-0">Read and share honest reviews from fellow book lovers.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-shopping-cart text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h5>Easy Shopping</h5>
+                                    <p class="text-muted mb-0">Purchase or rent books with our secure and simple checkout.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-heart text-primary me-3 mt-1"></i>
+                                <div>
+                                    <h5>Wishlist & Favorites</h5>
+                                    <p class="text-muted mb-0">Keep track of books you want to read and your favorites.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <h2 class="h3 mb-4">Our Story</h2>
+                    <p class="mb-4">
+                        Founded by a group of passionate readers and technology enthusiasts, Connect2Us was born 
+                        from the simple idea that reading should be social, accessible, and enjoyable for everyone. 
+                        We noticed that while digital technology was transforming many aspects of our lives, 
+                        the book discovery and sharing experience remained fragmented.
+                    </p>
+                    <p class="mb-4">
+                        That's why we created Connect2Us - a platform that combines the best of traditional 
+                        bookstores with modern technology to create a seamless, engaging experience for book 
+                        lovers everywhere. Whether you're looking for your next great read, want to share your 
+                        thoughts on a recent book, or simply connect with other readers, Connect2Us is here to 
+                        make it happen.
+                    </p>
+                    <p class="mb-0">
+                        Join our growing community and discover why thousands of readers have made Connect2Us 
+                        their go-to destination for all things books.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <h3 class="mb-4">Ready to Join Our Community?</h3>
+                <div class="d-flex justify-content-center gap-3">
+                    @Html.ActionLink("Sign Up Today", "Register", "Account", null, new { @class = "btn btn-primary btn-lg" })
+                    @Html.ActionLink("Browse Books", "Index", "Books", null, new { @class = "btn btn-outline-primary btn-lg" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+}
