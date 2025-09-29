@@ -77,3 +77,7 @@ C:\Users\olatu\source\repos\Connect2Us3.1\Connect2Us3.01\obj\Debug\Connect2Us3.0
 C:\Users\olatu\source\repos\Connect2Us3.1\Connect2Us3.01\obj\Debug\Connect2.F00FFE23.Up2Date
 C:\Users\olatu\source\repos\Connect2Us3.1\Connect2Us3.01\obj\Debug\Connect2Us3.01.dll
 C:\Users\olatu\source\repos\Connect2Us3.1\Connect2Us3.01\obj\Debug\Connect2Us3.01.pdb
+C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\obj\Debug\Connect2Us3.01.csproj.AssemblyReference.cache
+C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\obj\Debug\Connect2Us3.01.csproj.CoreCompileInputs.cache
+C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\obj\Debug\Connect2Us3.01.dll
+C:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\obj\Debug\Connect2Us3.01.pdb
