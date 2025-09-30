@@ -9,28 +9,12 @@
         "projectUniqueName": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\Connect2Us3.01.csproj",
         "projectName": "Connect2Us3.01",
         "projectPath": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\Connect2Us3.01.csproj",
-        "packagesPath": "C:\\Users\\olatu\\.nuget\\packages\\",
-        "projectStyle": "PackagesConfig",
         "UsingMicrosoftNETSdk": false,
-        "configFilePaths": [
-          "C:\\Users\\olatu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net472": {
             "projectReferences": {}
           }
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low"
-        },
-        "packagesConfigPath": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\packages.config"
+        }
       },
       "frameworks": {
         "net472": {}

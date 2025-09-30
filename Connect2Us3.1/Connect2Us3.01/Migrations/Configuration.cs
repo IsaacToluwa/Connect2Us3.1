@@ -11,18 +11,23 @@ namespace Connect2Us3._01.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "Connect2Us3._01.DAL.ApplicationDbContext";
         }
 
         protected override void Seed(Connect2Us3._01.DAL.ApplicationDbContext context)
         {
-            // Seed Roles
+            SeedInitialData(context);
+        }
+
+        public void SeedUsersAndRoles(Connect2Us3._01.DAL.ApplicationDbContext context)
+        {
             SeedRoles(context);
-            
-            // Seed Users
             SeedUsers(context);
-            
+        }
+
+        public void SeedInitialData(Connect2Us3._01.DAL.ApplicationDbContext context)
+        {
             // Seed Categories
             SeedCategories(context);
             
@@ -51,121 +56,99 @@ namespace Connect2Us3._01.Migrations
             context.SaveChanges();
         }
 
-        public void PublicSeed(Connect2Us3._01.DAL.ApplicationDbContext context)
-        {
-            Seed(context);
-        }
-
         private void SeedRoles(Connect2Us3._01.DAL.ApplicationDbContext context)
         {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            string[] roleNames = { "Admin", "Staff", "Customer" };
-            foreach (var roleName in roleNames)
+            if (!context.Roles.Any(r => r.Name == "Admin"))
             {
-                if (!roleManager.RoleExists(roleName))
-                {
-                    roleManager.Create(new IdentityRole(roleName));
-                }
+                context.Roles.Add(new IdentityRole { Name = "Admin" });
+            }
+            if (!context.Roles.Any(r => r.Name == "Staff"))
+            {
+                context.Roles.Add(new IdentityRole { Name = "Staff" });
+            }
+            if (!context.Roles.Any(r => r.Name == "Customer"))
+            {
+                context.Roles.Add(new IdentityRole { Name = "Customer" });
             }
         }
 
         private void SeedUsers(Connect2Us3._01.DAL.ApplicationDbContext context)
         {
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            
-            // Admin User
-            if (userManager.FindByEmail("admin@connect2us.com") == null)
+            var passwordHasher = new PasswordHasher();
+
+            if (!context.Users.Any(u => u.UserName == "admin@example.com"))
             {
                 var adminUser = new ApplicationUser
                 {
-                    UserName = "admin@connect2us.com",
-                    Email = "admin@connect2us.com",
+                    UserName = "admin@example.com",
+                    Email = "admin@example.com",
+                    PasswordHash = passwordHasher.HashPassword("Password123!"),
+                    SecurityStamp = Guid.NewGuid().ToString(),
                     FirstName = "Admin",
                     LastName = "User",
-                    PhoneNumber = "1234567890",
-                    Address = "123 Admin Street",
-                    City = "Admin City",
-                    State = "Admin State",
-                    ZipCode = "12345"
+                    DateJoined = DateTime.Now
                 };
-                
-                var result = userManager.Create(adminUser, "Admin123!");
-                if (result.Succeeded)
-                {
-                    userManager.AddToRole(adminUser.Id, "Admin");
-                }
+                context.Users.Add(adminUser);
             }
-            
-            // Staff User
-            if (userManager.FindByEmail("staff@connect2us.com") == null)
+
+            if (!context.Users.Any(u => u.UserName == "staff@example.com"))
             {
                 var staffUser = new ApplicationUser
                 {
-                    UserName = "staff@connect2us.com",
-                    Email = "staff@connect2us.com",
+                    UserName = "staff@example.com",
+                    Email = "staff@example.com",
+                    PasswordHash = passwordHasher.HashPassword("Password123!"),
+                    SecurityStamp = Guid.NewGuid().ToString(),
                     FirstName = "Staff",
-                    LastName = "Member",
-                    PhoneNumber = "2345678901",
-                    Address = "456 Staff Avenue",
-                    City = "Staff City",
-                    State = "Staff State",
-                    ZipCode = "23456"
+                    LastName = "User",
+                    DateJoined = DateTime.Now
                 };
-                
-                var result = userManager.Create(staffUser, "Staff123!");
-                if (result.Succeeded)
-                {
-                    userManager.AddToRole(staffUser.Id, "Staff");
-                }
+                context.Users.Add(staffUser);
             }
-            
-            // Customer User
-            if (userManager.FindByEmail("customer@connect2us.com") == null)
+
+            for (int i = 1; i <= 15; i++)
             {
-                var customerUser = new ApplicationUser
+                var email = $"customer{i}@example.com";
+                if (!context.Users.Any(u => u.UserName == email))
                 {
-                    UserName = "customer@connect2us.com",
-                    Email = "customer@connect2us.com",
-                    FirstName = "John",
-                    LastName = "Customer",
-                    PhoneNumber = "3456789012",
-                    Address = "789 Customer Lane",
-                    City = "Customer City",
-                    State = "Customer State",
-                    ZipCode = "34567"
-                };
-                
-                var result = userManager.Create(customerUser, "Customer123!");
-                if (result.Succeeded)
-                {
-                    userManager.AddToRole(customerUser.Id, "Customer");
-                }
-            }
-            
-            // Additional Customer Users (12 more)
-            for (int i = 1; i <= 12; i++)
-            {
-                string email = $"customer{i}@connect2us.com";
-                if (userManager.FindByEmail(email) == null)
-                {
-                    var user = new ApplicationUser
+                    var customerUser = new ApplicationUser
                     {
                         UserName = email,
                         Email = email,
+                        PasswordHash = passwordHasher.HashPassword("Password123!"),
+                        SecurityStamp = Guid.NewGuid().ToString(),
                         FirstName = $"Customer{i}",
                         LastName = "User",
-                        PhoneNumber = $"555000{i:D4}",
-                        Address = $"{i * 100} Customer Street",
-                        City = "Customer City",
-                        State = "Customer State",
-                        ZipCode = $"{10000 + i}"
+                        DateJoined = DateTime.Now.AddDays(-i)
                     };
-                    
-                    var result = userManager.Create(user, "Customer123!");
-                    if (result.Succeeded)
-                    {
-                        userManager.AddToRole(user.Id, "Customer");
-                    }
+                    context.Users.Add(customerUser);
+                }
+            }
+
+            // Assign roles to users
+            var admin = context.Users.FirstOrDefault(u => u.UserName == "admin@example.com");
+            var staff = context.Users.FirstOrDefault(u => u.UserName == "staff@example.com");
+            var adminRole = context.Roles.FirstOrDefault(r => r.Name == "Admin");
+            var staffRole = context.Roles.FirstOrDefault(r => r.Name == "Staff");
+            var customerRole = context.Roles.FirstOrDefault(r => r.Name == "Customer");
+
+            if (admin != null && adminRole != null && !admin.Roles.Any(r => r.RoleId == adminRole.Id))
+            {
+                admin.Roles.Add(new IdentityUserRole { UserId = admin.Id, RoleId = adminRole.Id });
+            }
+
+            if (staff != null && staffRole != null && !staff.Roles.Any(r => r.RoleId == staffRole.Id))
+            {
+                staff.Roles.Add(new IdentityUserRole { UserId = staff.Id, RoleId = staffRole.Id });
+            }
+
+            for (int i = 1; i <= 15; i++)
+            {
+                var email = $"customer{i}@example.com";
+                var customer = context.Users.FirstOrDefault(u => u.UserName == email);
+                if (customer != null && customerRole != null && !customer.Roles.Any(r => r.RoleId == customerRole.Id))
+                {
+                    customer.Roles.Add(new IdentityUserRole { UserId = customer.Id, RoleId = customerRole.Id });
                 }
             }
         }

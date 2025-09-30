@@ -11,14 +11,23 @@ namespace Seeder
             try
             {
                 Console.WriteLine("Starting database seeding...");
-                
+
+                var configuration = new Configuration();
+
+                Console.WriteLine("Seeding users and roles...");
                 using (var context = new ApplicationDbContext())
                 {
-                    var configuration = new Configuration();
-                    configuration.PublicSeed(context);
+                    configuration.SeedUsersAndRoles(context);
                     context.SaveChanges();
                 }
-                
+
+                Console.WriteLine("Seeding initial data...");
+                using (var context = new ApplicationDbContext())
+                {
+                    configuration.SeedInitialData(context);
+                    context.SaveChanges();
+                }
+
                 Console.WriteLine("Database seeding completed successfully!");
                 Console.WriteLine("\nCreated Users:");
                 Console.WriteLine("Admin User: admin@connect2us.com / Admin123!");

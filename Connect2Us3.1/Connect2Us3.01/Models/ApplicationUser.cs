@@ -14,6 +14,7 @@ namespace Connect2Us3._01.Models
         public string City { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
+        public System.DateTime DateJoined { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

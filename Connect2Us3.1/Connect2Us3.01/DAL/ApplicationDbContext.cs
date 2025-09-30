@@ -1,9 +1,12 @@
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Connect2Us3._01.Models;
+using System.Data.Entity.Infrastructure;
+using Connect2Us3._01.Internal;
 
 namespace Connect2Us3._01.DAL
 {
+    [DbConfigurationType(typeof(MyDbConfiguration))]
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
