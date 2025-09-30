@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "auHaLq31xm4=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\olatu\\source\\repos\\Connect2Us3.12\\Connect2Us3.1\\Connect2Us3.01\\Seeder\\Seeder\\Seeder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\olatu\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
+    "C:\\Users\\olatu\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.4\\microsoft.aspnet.identity.core.2.2.4.nupkg.sha512",
+    "C:\\Users\\olatu\\.nuget\\packages\\microsoft.aspnet.identity.entityframework\\2.2.4\\microsoft.aspnet.identity.entityframework.2.2.4.nupkg.sha512"
+  ],
+  "logs": []
+}

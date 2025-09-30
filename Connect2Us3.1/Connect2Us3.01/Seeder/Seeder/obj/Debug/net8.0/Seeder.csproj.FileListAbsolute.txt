@@ -1,0 +1,6 @@
+c:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\Seeder\Seeder\obj\Debug\net8.0\Seeder.csproj.AssemblyReference.cache
+c:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\Seeder\Seeder\obj\Debug\net8.0\Seeder.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\Seeder\Seeder\obj\Debug\net8.0\Seeder.AssemblyInfoInputs.cache
+c:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\Seeder\Seeder\obj\Debug\net8.0\Seeder.AssemblyInfo.cs
+c:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\Seeder\Seeder\obj\Debug\net8.0\Seeder.csproj.CoreCompileInputs.cache
+c:\Users\olatu\source\repos\Connect2Us3.12\Connect2Us3.1\Connect2Us3.01\Seeder\Seeder\obj\Debug\net8.0\Seeder.sourcelink.json
